@@ -8,11 +8,11 @@ int main(void)
 	int i;
 	int j;
 	int k;
-	
+
 	for (i = 48; i < 57; i++)
 	{
 		for (j = 49; j < 58; j++)
-		{       	
+		{
 			for (k = 50; k < 58; k++)
 			{
 				if (j > i && k > j)
@@ -20,7 +20,7 @@ int main(void)
 					putchar(i);
 					putchar(j);
 					putchar(k);
-					if (i != 55 || j !=56 || k != 57)
+					if (i != 55 || j != 56 || k != 57)
 					{
 						putchar(',');
 						putchar(' ');
