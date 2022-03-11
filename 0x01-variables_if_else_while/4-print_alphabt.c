@@ -11,10 +11,9 @@ int main(void)
 	c = 'a';
 	while (c < 123)
 	{	if (c != 'e' && c != 'q')
-		{	
+		{
 			putchar(c);
-			c++;	
-		
+			c++;
 		}
 		else
 		{
