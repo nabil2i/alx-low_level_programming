@@ -10,6 +10,7 @@ int main(void)
 	int i;
 	unsigned long int m, n, nextterm, sum;
 
+	i = 0;
 	sum = 0;
 	while (i <= 33);
 	{
