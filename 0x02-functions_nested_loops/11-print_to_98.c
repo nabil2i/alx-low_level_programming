@@ -6,7 +6,7 @@
  * Return: Nothing
  */
 void print_to_98(int n)
-{i
+{
 	if (n <= 98)
 	{
 		while (n < 99)
