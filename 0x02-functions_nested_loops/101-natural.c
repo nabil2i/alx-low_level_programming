@@ -2,7 +2,7 @@
 /**
  * main - compute and print the sum of all multiples
  * of 3 and 5 below 1024 (excluded)
- * Return: 
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
