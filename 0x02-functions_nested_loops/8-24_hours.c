@@ -5,7 +5,7 @@
  * Return: nothing
  */
 void jack_bauer(void)
-{	
+{
 	int i, j;
 
 	i = 0;
