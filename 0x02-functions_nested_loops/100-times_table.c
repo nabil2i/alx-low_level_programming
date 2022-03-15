@@ -18,24 +18,21 @@ void print_times_table(int n)
 				if (j == 0)
 				{
 					_putchar(m + 48);
-				}
-				else if (j != 0 && m < 10)
+				} else if (j != 0 && m < 10)
 				{
 					_putchar(',');
 					_putchar(' ');
 					_putchar(' ');
 					_putchar(' ');
 					_putchar(m + 48);
-				}
-				else if (m >= 10 && m < 100)
+				} else if (m >= 10 && m < 100)
 				{
 					_putchar(',');
 					_putchar(' ');
 					_putchar(' ');
 					_putchar((m / 10) + 48);
 					_putchar((m % 10) + 48);
-				}
-				else if (m  >= 100)
+				} else if (m  >= 100)
 				{
 					_putchar(',');
 					_putchar(' ');
