@@ -12,7 +12,7 @@ int main(void)
 
 	i = 1;
 	sum = 0;
-	while (i <= 33);
+	for (i = 1; i <= 33; i++);
 	{
 		if (m < 4000000 && (m % 2) == 0)
 		{
@@ -21,7 +21,6 @@ int main(void)
 		nextterm = m + n;
 		m = n;
 		n = nextterm;
-		i++;
 	}
 	printf("%lu\n", sum);
 	return (0);
