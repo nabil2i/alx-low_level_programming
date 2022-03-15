@@ -8,19 +8,21 @@
 int main(void)
 {
 	int i;
-	unsigned long int m, n, nextterm, sum;
+	unsigned long int j, k, next, sum;
 
-	i = 1;
+	j = 1;
+	k = 2;
 	sum = 0;
-	for (i = 1; i <= 33; i++);
+
+	for (i = 1; i <= 33; ++i)
 	{
-		if (m < 4000000 && (m % 2) == 0)
+		if (j < 4000000 && (j % 2) == 0)
 		{
-			sum = sum + m;
+			sum = sum + j;
 		}
-		nextterm = m + n;
-		m = n;
-		n = nextterm;
+		next = j + k;
+		j = k;
+		k = next;
 	}
 	printf("%lu\n", sum);
 	return (0);
