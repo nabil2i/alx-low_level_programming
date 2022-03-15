@@ -7,11 +7,11 @@
 int main(void)
 {
 	int i, n;
-	
-	n =0;
+
+	n = 0;
 	for (i = 0; i < 1024; i++)
 	{
-		if (i % 3 == 0 || i % 5 ==0)
+		if (i % 3 == 0 || i % 5 == 0)
 		{
 			n = n + i;
 		}
