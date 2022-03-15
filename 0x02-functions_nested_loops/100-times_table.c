@@ -3,13 +3,10 @@
  * print_times_table - print the n times table
  * @n: argument, table of n
  * Return: nothing (display the table or nothing)
- */ 
+ */
 void print_times_table(int n)
 {
-	if (n > 15 || n < 0)
-	{
-	}
-	else
+	if (n <= 15 && n >= 0)
 	{
 		int i, j, m;
 
@@ -30,7 +27,7 @@ void print_times_table(int n)
 					_putchar(' ');
 					_putchar(m + 48);
 				}
-				else if (m >= 10 && m < 100) 
+				else if (m >= 10 && m < 100)
 				{
 					_putchar(',');
 					_putchar(' ');
