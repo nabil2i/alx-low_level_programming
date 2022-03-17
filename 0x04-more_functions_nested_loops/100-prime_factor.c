@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-	int i;
+	long int i;
 	long int n;
 
 	n = 612852475143;
@@ -20,7 +20,7 @@ int main(void)
 	{
 		while (n % i == 0)
 		{
-			n = n / 2;
+			n = n / i;
 		}
 	}
 	if (n > 2)
