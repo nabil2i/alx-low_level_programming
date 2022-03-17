@@ -7,7 +7,7 @@
  */
 void print_number(int n)
 {
-	int m;
+	unsigned int m;
 
 	if (n < 0)
 	{
@@ -24,4 +24,3 @@ void print_number(int n)
 	}
 	_putchar((m % 10) + 48);
 }
-
