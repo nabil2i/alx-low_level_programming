@@ -18,19 +18,19 @@ int main(void)
 		{
 			printf("FizzBuzz ");
 		}
-		else if (i % 5 == 0 && i != 100) 
-		{	
+		else if (i % 5 == 0 && i != 100)
+		{
 			printf("Buzz ");
 		}
-		
+
 		else if (i % 3 == 0 && i != 100)
-		{	
+		{
 			printf("Fizz ");
-		}	
+		}
 		else
-		{		
+		{	
 			printf("%d ", i);
-	
+
 		}
 	}
 	return (0);
