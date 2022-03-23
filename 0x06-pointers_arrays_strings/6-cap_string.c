@@ -9,7 +9,7 @@ char *cap_string(char *s)
 {
 	int i, j;
 	char seperator[13] = {' ', '\t', '\n', ',',
-	       	';', '.', '!', '?', '"', '(', ')', '{', '}'};
+			';', '.', '!', '?', '"', '(', ')', '{', '}'};
 
 	i = 0;
 	while (s[i] != '\0')
@@ -18,19 +18,22 @@ char *cap_string(char *s)
 		{
 			s[i] = s[i] - 32;
 		}
-		j = 0;
-		while (j < 13)
+		else
 		{
-			if (s[i] == seperator[j])
+			j = 0;
+			while (j < 13)
 			{
-				if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+				if (s[i] == seperator[j])
 				{
-					s[i + 1] = s[i + 1] - 32;
+					if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+					{
+						s[i + 1] = s[i + 1] - 32;
+					}
 				}
+				j++;
 			}
-			j++;
+			i++;
 		}
-		i++;
 	}
 
 	return (s);
