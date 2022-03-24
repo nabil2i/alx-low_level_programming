@@ -29,7 +29,7 @@ int _atoi(char *s)
 		if (s[i] >= 48 && s[i] <= 57)
 		{
 			k = s[i] - '0';
-			if (posneg % 2)
+			if (posneg % 2 != 0)
 				k = -k;
 			n = n * 10 + k;
 			flag = 1;
