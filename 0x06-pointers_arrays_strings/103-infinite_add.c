@@ -56,7 +56,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	{
 		for (l = k - 1; l >= 0; l--)
 		{
-			r[k - l - 1] = sum[l] + '0';
+			r[k - l - 1] = (sum[l] % 10) + 48;
 		}	 
 		r[k] = '\0';
 		return (r);
