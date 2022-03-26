@@ -5,7 +5,7 @@
  * printline - prints s bytes buffer
  * @c: buffer
  * @s: bytes of buffer
- * @l: line of buffer 
+ * @l: line of buffer
  * Return: Nothing
  */
 
