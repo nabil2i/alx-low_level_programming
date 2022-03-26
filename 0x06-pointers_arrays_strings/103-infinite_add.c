@@ -9,56 +9,39 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, k, l, reminder, a[255], b[255], sum[255];
+	int len1, len2, i, j, k, l, reminder, add, temp;
 
-	i = 0;
-	j = 0;
 	k = 0;
-	l = 0;
+	len1 = 0;
+	len2 = 0;
 	reminder = 0;
-	while (*n1)
-		a[i++] = *n1++ - 48;
-	while (*n2)
-		b[j++] = *n2++ - 48;
-	if (i < j)
+	while (n1[len1] != '\0')
+		len1++;
+	while (n2[len2] != '\0')
+		len2++;
+	if (len1 > size_r || len2 > size_r)
+		return (0);
+
+	for (i = len1 - 1, j = len2 - 1, k = 0; k < size_r - 1; i--, j--, k++)
 	{
-		for (l = i; l > 0; l--)
-		{
-			sum[k++] = ((a[l - 1] + b[--j]) + reminder) % 10;
-			reminder = ((a[l - 1] + b[j]) + reminder) / 10;
-		}
-		while (j > 0)
-		{
-			sum[k++] = b[--j] + reminder;
-			reminder = 0;
-		}
+		add = reminder;
+		if (i >= 0)
+			add = add + (n1[i] - '0');
+		if (j >= 0)
+			add = add + (n2[j] - '0');
+		if (i < 0 && j < 0 && add == 0)
+			break;
+		reminder = add / 10;
+		r[k] = add % 10 + '0';
 	}
-	else
+	r[k] = '\0';
+	if (i >= 0 || j >= 0 || reminder != 0)
+		return (0);
+	for (l = k - 1, i = 0; i < l; l--, i++)
 	{
-		for (l = j; l > 0; l--)
-		{
-			sum[k++] = ((b[l - 1] + a[--i]) + reminder) % 10;
-			reminder = ((b[l - 1] + a[i]) + reminder) / 10;
-		}
-		if (i == 0 && reminder == 1)
-			sum[k++]  = reminder;
-		while (i > 0)
-		{
-			sum[k++] = a[--i] + reminder;
-			reminder = 0;
-		}
+		temp = r[l];
+		r[l] = r[i];
+		r[i] = temp;
 	}
-	if (k + 2 > size_r)
-	{
-		return (0);	
-	}
-	else
-	{
-		for (l = k - 1; l >= 0; l--)
-		{
-			r[k - l - 1] = (sum[l] % 10) + 48;
-		}	 
-		r[k] = '\0';
-		return (r);
-	}
+	return (r);
 }
