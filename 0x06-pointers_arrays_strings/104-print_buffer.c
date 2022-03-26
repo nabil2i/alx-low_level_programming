@@ -20,8 +20,8 @@ void printline(char *s, int a, int l)
 	int i, j;
 	for (i = 0; i <= 9; i++)
 	{
-		if (i < a)
-			printf("%d02x", s[l * 10 + i]);
+		if (i <= a)
+			printf("%02x", s[l * 10 + i]);
 		else 
 			printf("  ");
 		if (i % 2 != 0)
@@ -29,7 +29,7 @@ void printline(char *s, int a, int l)
 	}
 	for (j = 0; j <= a; j++)
 	{
-		if (s[l * 10 +j] > 31 && s[l * 10 + j] < 127)
+		if (s[l * 10 + j] > 31 && s[l * 10 + j] < 127)
 			_putchar(s[l * 10 + j]);
 		else
 			_putchar('.');
