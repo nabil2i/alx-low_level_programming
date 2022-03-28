@@ -4,7 +4,7 @@
 /**
  * print_diagsums - prints the sum of the two diagonals of a square matrix
  * @a: matrix
- * @size:
+ * @size: size of the matrix
  * Return: void
  */
 void print_diagsums(int *a, int size)
@@ -18,5 +18,5 @@ void print_diagsums(int *a, int size)
 		sum1 = sum1 + a[i + (i * size)];
 		sum2 = sum2 + a[((i + 1) * size) - (i + 1)];
 	}
-	printf ("%d, %d\n", sum1, sum2);
+	printf("%d, %d\n", sum1, sum2);
 }
