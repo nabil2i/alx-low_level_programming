@@ -4,7 +4,7 @@ int palindrome(char *s, int a, int b);
 int strlen_rec(char *s);
 
 /**
- * strrec - computes length of string
+ * strlen_rec - computes length of string
  * @s: string to compute the length of
  * Return: length
  */
