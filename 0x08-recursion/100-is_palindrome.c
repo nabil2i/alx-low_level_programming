@@ -1,6 +1,20 @@
 #include "main.h"
 
 int palindrome(char *s, int a, int b);
+int strlen_rec(char *s);
+
+/**
+ * strrec - computes length of string
+ * @s: string to compute the length of
+ * Return: length
+ */
+int strlen_rec(char *s)
+{
+	if (!*s)
+		return (0);
+	return (1 + strlen_rec(s + 1));
+
+}
 /**
  * is_palindrome - checks if the string is a palindrome
  * @s: pointer to string to be checked
@@ -10,9 +24,7 @@ int is_palindrome(char *s)
 {
 	int l;
 
-	l = 0;
-	while (s[l])
-		l++;
+	l = strlen_rec(s);
 	if (l == 0)
 		return (1);
 	return (palindrome(s, 0, l - 1));
