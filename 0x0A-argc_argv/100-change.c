@@ -24,18 +24,16 @@ int main(int argc, char *argv[])
 	if (cents < 0)
 	{
 		printf("0\n");
+		return (EXIT_SUCCESS);
 	}
-	else
+	for (i = 0; i < 5 && cents >= 0; i++)
 	{
-		for (i = 0; i < 5 && cents >= 0; i++)
+		while (cents >= coins[i])
 		{
-			while (cents >= coins[i])
-			{
-				min++;
-				cents = cents - coins[i];
-			}
+			min++;
+			cents = cents - coins[i];
 		}
-		printf("%d\n", min);
 	}
+	printf("%d\n", min);
 	return (EXIT_SUCCESS);
 }
