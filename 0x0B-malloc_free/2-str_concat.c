@@ -34,21 +34,27 @@ char *str_concat(char *s1, char *s2)
 	char *s;
 
 	j = 0;
-	if (s1 == NULL || s2 == NULL)
+	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 	len1 = _strlen(s1);
 	len2 = _strlen(s2);
 	s = malloc((len1 + len2 + 1) * sizeof(char));
 	if (s == NULL)
 		return (NULL);
-	for (i = 0; i < len1; i++)
+	if (s1 != NULL)
 	{
-		s[i] = s1[i];
+		for (i = 0; i < len1; i++)
+		{
+			s[i] = s1[i];
+		}
 	}
-	for (i = len1; s2[j] != '\0'; i++)
+	if (s2 != NULL)
 	{
-		s[i] = s2[j];
-		j++;
+		for (i = len1; s2[j] != '\0'; i++)
+		{
+			s[i] = s2[j];
+			j++;
+		}
 	}
 	s[i] = '\0';
 	return (s);
