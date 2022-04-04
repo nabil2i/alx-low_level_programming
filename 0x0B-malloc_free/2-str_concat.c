@@ -5,7 +5,7 @@ int _strlen(char *s);
 /**
  * _strlen - compute the length of a string
  * @s: pointer to a char
- * Returin: integer, the number of charcaters of the string
+ * Return: integer, the number of charcaters of the string
  */
 int _strlen(char *s)
 {
@@ -36,8 +36,10 @@ char *str_concat(char *s1, char *s2)
 	j = 0;
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
+	if (s1 != NULL)
+		len1 = _strlen(s1);
+	if (s2 != NULL)
+		len2 = _strlen(s2);
 	s = malloc((len1 + len2 + 1) * sizeof(char));
 	if (s == NULL)
 		return (NULL);
