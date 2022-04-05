@@ -33,8 +33,8 @@ char *str_concat(char *s1, char *s2)
 	int i, j, len1, len2;
 	char *s;
 
-	if (s1 == NULL && s2 == NULL)
-		return (NULL);
+	i = 0;
+	j = 0;
 
 	if (s1 == NULL)
 		len1 = 0;
