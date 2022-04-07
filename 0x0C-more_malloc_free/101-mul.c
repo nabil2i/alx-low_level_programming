@@ -1,148 +1,117 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
+int _isdigit(char c);
+int _strlen(char *s);
 /**
- * _print - moves a string one place to the left and prints the string
- * @str: string to move
- * @l: size of string
- *
- * Return: void
+ * _isdigit - checks if a character is a digit or not
+ * @c: character to chcek
+ * Return: 1 if it's a digit and 0 ifnot
  */
-void _print(char *str, int l)
+int _isdigit(char c)
 {
-	int i, j;
-
-	i = j = 0;
-	while (i < l)
-	{
-		if (str[i] != '0')
-			j = 1;
-		if (j || i == l - 1)
-			_putchar(str[i]);
-		i++;
-	}
-
-	_putchar('\n');
-	free(str);
+	return (c >= '0' && c <= '9');
 }
 
 /**
- * mul - multiplies a char with a string and places the answer into dest
- * @n: char to multiply
- * @num: string to multiply
- * @num_index: last non NULL index of num
- * @dest: destination of multiplication
- * @dest_index: highest index to start addition
- *
- * Return: pointer to dest, or NULL on failure
+ * _strlen - computes the lenght of a string
+ * @s: string to compute the length of
+ * Return: length of the string
  */
-char *mul(char n, char *num, int num_index, char *dest, int dest_index)
+int _strlen(char *s)
 {
-	int j, k, mul, mulrem, add, addrem;
+	int len;
 
-	mulrem = addrem = 0;
-	for (j = num_index, k = dest_index; j >= 0; j--, k--)
-	{
-		mul = (n - '0') * (num[j] - '0') + mulrem;
-		mulrem = mul / 10;
-		add = (dest[k] - '0') + (mul % 10) + addrem;
-		addrem = add / 10;
-		dest[k] = add % 10 + '0';
-	}
-	for (addrem += mulrem; k >= 0 && addrem; k--)
-	{
-		add = (dest[k] - '0') + addrem;
-		addrem = add / 10;
-		dest[k] = add % 10 + '0';
-	}
-	if (addrem)
-	{
-		return (NULL);
-	}
-	return (dest);
-}
-/**
- * check_for_digits - checks the arguments to ensure they are digits
- * @av: pointer to arguments
- *
- * Return: 0 if digits, 1 if not
- */
-int check_for_digits(char **av)
-{
-	int i, j;
-
-	for (i = 1; i < 3; i++)
-	{
-		for (j = 0; av[i][j]; j++)
-		{
-			if (av[i][j] < '0' || av[i][j] > '9')
-				return (1);
-		}
-	}
-	return (0);
+	for (len = 0; s[len]; len++)
+		;
+	return (len);
 }
 
 /**
- * init - initializes a string
- * @str: sting to initialize
- * @l: length of strinf
- *
- * Return: void
- */
-void init(char *str, int l)
-{
-	int i;
-
-	for (i = 0; i < l; i++)
-		str[i] = '0';
-	str[i] = '\0';
-}
-
-/**
- * main - multiply two numbers
- * @argc: number of arguments
- * @argv: argument vector
- *
- * Return: zero, or exit status of 98 if failure
+ * main - multiplies two positive numbers
+ * @argc: number of passed arguments
+ * @argv: array of strings
+ * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	int l1, l2, ln, ti, i;
-	char *a;
-	char *t;
-	char e[] = "Error\n";
+	int i, j, len1, len2, l2, len, flag, flag2, m, d1, d2;
+	char *s1, *s2;
+	int *n;
 
-	if (argc != 3 || check_for_digits(argv))
+	flag = 0;
+	m = 0;
+	n = 0;
+	len1 = 0;
+	len2 = 0;
+	l2 = 0;
+	len = 0;
+	flag2 = 0;
+
+	if (argc != 3)
 	{
-		for (ti = 0; e[ti]; ti++)
-			_putchar(e[ti]);
+		printf("Error\n");
 		exit(98);
 	}
-	for (l1 = 0; argv[1][l1]; l1++)
-		;
-	for (l2 = 0; argv[2][l2]; l2++)
-		;
-	ln = l1 + l2 + 1;
-	a = malloc(ln * sizeof(char));
-	if (a == NULL)
+	s1 = argv[1];
+	s2 = argv[2];
+	i = 0;
+	while (s1[i])
 	{
-		for (ti = 0; e[ti]; ti++)
-			_putchar(e[ti]);
+		if (!_isdigit(s1[i]))
+			flag++;
+		i++;
+	}
+
+	j = 0;
+	while (s2[j])
+	{
+		if (!_isdigit(s2[j]))
+			flag++;
+		j++;
+	}
+	if (flag != 0)
+	{
+		printf("Error\n");
 		exit(98);
 	}
-	init(a, ln - 1);
-	for (ti = l2 - 1, i = 0; ti >= 0; ti--, i++)
+
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	l2 = len2;
+	len = len1 + len2;
+	n = malloc((len1 + len2 + 1) * sizeof(int));
+	if (n == NULL)
+		return (1);
+
+	for (i = 0; i < (len1 + len2 + 1); i++)
+		n[i] = 0;
+
+	for (len1 = len1 - 1; len1 >= 0; len1--)
 	{
-		t = mul(argv[2][ti], argv[1], l1 - 1, a, (ln - 2) - i);
-		if (t == NULL)
+		m = 0;
+		d1 = s1[len1] - '0';
+		for (len2 = l2 - 1; len2 >= 0; len2--)
 		{
-			for (ti = 0; e[ti]; ti++)
-				_putchar(e[ti]);
-			free(a);
-			exit(98);
+			d2 = s2[len2] - '0';
+			m = m + n[len1 + len2 + 1] + (d1 * d2);
+			n[len1 + len2 + 1] = m % 10;
+			m = m / 10;
 		}
+		if (m > 0)
+			n[len1 + len2 + 1] = n[len1 + len2 + 1] + m;
 	}
-	_print(a, ln - 1);
+	for (i = 0; i < len; i++)
+	{
+		if (n[i] != 0)
+			flag2 = 1;
+		if (flag2 == 1)
+			_putchar(n[i] + '0');
+	}
+	if (flag2 == 0)
+		_putchar('0');
+	_putchar('\n');
+	free(n);
 	return (0);
 }
-
