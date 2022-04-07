@@ -4,7 +4,6 @@
 
 int _isdigit(char c);
 int _strlen(char *s);
-int _atoi(char *s);
 /**
  * _isdigit - checks if a character is a digit or not
  * @c: character to chcek
@@ -13,7 +12,7 @@ int _atoi(char *s);
 int _isdigit(char c)
 {
 	return (c >= '0' && c <= '9');
-}*
+}
 
 /**
  * _strlen - computes the lenght of a string
@@ -23,78 +22,52 @@ int _isdigit(char c)
 int _strlen(char *s)
 {
 	int len;
+
 	for (len = 0; s[len]; len++)
 		;
 	return (len);
 }
 
 /**
- * _atoi - converts a string to an integer
- * @s: arg, pointer to a string
- * Return: an integer
- */
-int _atoi(char *s)
-{
-	int i, posneg, k, n,  len, flag;
-
-	i = 0;
-	posneg = 0;
-	n = 0;
-	len = 0;
-	flag = 0;
-	k = 0;
-
-	len = _strlen(s);
-
-	while (i < len && flag == 0)
-	{
-		if (s[i] == '-')
-			++posneg;
-
-		if (s[i] >= 48 && s[i] <= 57)
-		{
-			k = s[i] - '0';
-			if (posneg % 2 != 0)
-				k = -k;
-			n = n * 10 + k;
-			flag = 1;
-			if (s[i + 1] < 48 || s[i + 1] > 57)
-				break;
-			flag = 0;
-		}
-		i++;
-	}
-
-	if (flag == 0)
-		return (0);
-
-	return (n);
-}
-
-/**
  * main - multiplies two positive numbers
+ * @argc: number of passed arguments
+ * @argv: array of strings
  * Return: Always 0 (Success)
  */
-int main(int argc; char *argv[])
+int main(int argc, char *argv[])
 {
-	int i, j, n1, n2, n, flag;
-	flag = 0, n1 = 0, n2 = 0, n = 0;
+	int i, j, len1, len2, l2, len, flag, flag2, m, d1, d2;
+	char *s1, *s2;
+	int *n;
+
+	flag = 0;
+	m = 0;
+	n = 0;
+	len1 = 0;
+	len2 = 0;
+	l2 = 0;
+	len = 0;
+	flag2 = 0;
+
 	if (argc != 3)
 	{
 		printf("Error\n");
-		exit (98);
+		exit(98);
 	}
+	s1 = argv[1];
+	s2 = argv[2];
 	i = 0;
-	while (argv[1][i])
+	while (s1[i])
 	{
-		if (!_isdigit(argv[1][i]))
+		if (!_isdigit(s1[i]))
 			flag++;
 		i++;
 	}
+
 	j = 0;
-	while (argv[2][j])
+	while (s2[j])
 	{
-		if (!_isdigit(argv[2][j]))
+		if (!_isdigit(s2[j]))
 			flag++;
 		j++;
 	}
@@ -103,12 +76,42 @@ int main(int argc; char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	n1 = _atoi(argv[1];
-	n2 = _atoi(argv[2];
-	n = n1 * n2;
-	printf("%d\n", n);
 
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	l2 = len2;
+	len = len1 + len2;
+	n = malloc((len1 + len2 + 1) * sizeof(int));
+	if (n == NULL)
+		return (1);
 
-	
-	return (EXIT_SUCCESS);
+	for (i = 0; i < (len1 + len2 + 1); i++)
+		n[i] = 0;
+
+	for (len1 = len1 - 1; len1 >= 0; len1--)
+	{
+		m = 0;
+		d1 = s1[len1] - '0';
+		for (len2 = l2 - 1; len2 >= 0; len2--)
+		{
+			d2 = s2[len2] - '0';
+			m = m + n[len1 + len2 + 1] + (d1 * d2);
+			n[len1 + len2 + 1] = m % 10;
+			m = m / 10;
+		}
+		if (m > 0)
+			n[len1 + len2 + 1] = n[len1 + len2 + 1] + m;
+	}
+	for (i = 0; i < len; i++)
+	{
+		if (n[i] != 0)
+			flag2 = 1;
+		if (flag2 == 1)
+			_putchar(n[i] + '0');
+	}
+	if (flag2 == 0)
+		_putchar('0');
+	_putchar('\n');
+	free(n);
+	return (0);
 }
