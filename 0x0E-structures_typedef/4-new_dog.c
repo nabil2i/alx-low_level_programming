@@ -1,7 +1,6 @@
 #include "dog.h"
 #include "stdlib.h"
 int _strlen(char *s);
-
 /**
  * _strlen - compute length of string
  * @s: string to compute the length of
@@ -27,11 +26,8 @@ void *copy_string(char *dest, char *src)
 	int len, i;
 
 	len = _strlen(src);
-
 	for (i = 0; i < len; i++)
-	{
 		dest[i] = src[i];
-	}
 	dest[i] = '\0';
 	return (dest);
 }
@@ -44,7 +40,6 @@ void *copy_string(char *dest, char *src)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-
 	dog_t *nd;
 	int len_name, len_owner;
 
@@ -70,6 +65,5 @@ dog_t *new_dog(char *name, float age, char *owner)
 	copy_string(nd->name, name);
 	nd->age = age;
 	copy_string(nd->owner, owner);
-
 	return (nd);
 }
