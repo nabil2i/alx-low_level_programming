@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
 	int number_bytes, i;
 	char *instruction = (char *)main;
-	
+
 	if (argc != 2)
 	{
 		printf("Error\n");
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		{
 			printf("%.2hhx\n", instruction[i]);
 		}
-		
+
 		printf("%.2hhx ", instruction[i]);
 	}
 
