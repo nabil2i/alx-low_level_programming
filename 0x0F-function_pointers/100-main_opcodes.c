@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 		if (i == number_bytes - 1)
 		{
 			printf("%.2hhx\n", instruction[i]);
+			return (0);
 		}
 
 		printf("%.2hhx ", instruction[i]);
