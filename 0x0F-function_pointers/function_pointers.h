@@ -2,12 +2,10 @@
 #define FUNCTION_POINTERS_H
 
 #include <stddef.h>
-/**
- * Declaration of functions
- */
-int _putchar(char c);
+
+int _putchar(char);
 void print_name(char *name, void (*f)(char *));
-void array_iterator(int *array, size_t size, void (*action)(int));
+void array_iterator(int *array, size_t size, void (*aiction)(int));
 int int_index(int *array, int size, int (*cmp)(int));
 
 #endif
