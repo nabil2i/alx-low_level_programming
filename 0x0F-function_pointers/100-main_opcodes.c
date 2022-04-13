@@ -10,7 +10,7 @@
 int main(int argc, char *argv[])
 {
 	int number_bytes, i;
-	char *instruction = (char *)main;
+	char *instruction;
 
 	if (argc != 2)
 	{
@@ -19,12 +19,14 @@ int main(int argc, char *argv[])
 	}
 
 	number_bytes = atoi(argv[1]);
+
 	if (number_bytes < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
 
+	instruction = (char *)main;
 	for (i = 0; i < number_bytes; i++)
 	{
 		if (i == number_bytes - 1)
