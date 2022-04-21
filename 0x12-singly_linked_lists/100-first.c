@@ -1,11 +1,11 @@
 #include <stdio.h>
 
+void first(void) __attribute__ ((constructor));
+
 /**
  * first - prints a asentence before main
  *
  */
-
-void first(void) __attribute__ ((constructor));
 
 void first(void)
 {
