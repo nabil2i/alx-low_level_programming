@@ -6,7 +6,7 @@
 /**
  * add_node_end - adds a new node at the end of a list
  * @head: pointer to the first element of the list
- * @str: constant pointer
+ * @str: string of new_node
  * Return: the address of the new element of NULL if failure
  */
 list_t *add_node_end(list_t **head, const char *str)
@@ -15,6 +15,10 @@ list_t *add_node_end(list_t **head, const char *str)
 	int len = 0;
 
 	new_node = malloc(sizeof(list_t));
+	if (new_node == NULL)
+	{
+		return (NULL);
+	}
 	last = *head;
 
 	while (str[len])
