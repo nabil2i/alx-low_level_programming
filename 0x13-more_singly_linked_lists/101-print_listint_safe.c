@@ -7,7 +7,7 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	unsigned int nodes;
+	size_t nodes;
 	long int diff;
 
 	if (!head)
