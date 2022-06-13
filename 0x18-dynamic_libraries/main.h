@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdlib.h>
 /* FUNCTIONS DECLARATIONS */
 int _putchar(char);
 int _islower(int c);
