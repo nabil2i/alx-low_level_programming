@@ -1,3 +1,3 @@
 #!/bin/bash
-wget -P /tmp https://github.com/nabil2i/alx-low_level_programming/blob/2ef7d529267a7b62caf5ede44bb6388f1fa20b19/0x18-dynamic_libraries/libinj.so
-export LD_PRELOAD=/tmp/libinj.so
+wget -P /tmp https://github.com/nabil2i/alx-low_level_programming/blob/151f7dcdc174865f97595dabdb4955978d6b0ac0/0x18-dynamic_libraries/libinjec.so
+export LD_PRELOAD=/tmp/libinjec.so
