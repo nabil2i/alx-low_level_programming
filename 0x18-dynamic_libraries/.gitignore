@@ -3,3 +3,6 @@ ofiles
 *.c
 *.o
 len
+100-tests.py
+100-operations.h
+100-operations.c
