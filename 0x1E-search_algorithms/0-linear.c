@@ -25,5 +25,5 @@ int linear_search(int *array, size_t size, int value)
 			return (i);
 		i++;
 	}
-	return (EXIT_FAILURE);
+	return (-1);
 }
